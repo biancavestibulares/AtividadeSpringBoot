@@ -1,0 +1,36 @@
+package com.generation.springteste.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.generation.springteste.model.Atividade2;
+import com.generation.springteste.repository.Atividade2Repository;
+
+
+@RestController
+@RequestMapping("/atividades") //Endpoint localhost:8080/atividades
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+public class AtividadeController {
+	
+	//Realizando a atividade 1 - Imprimir o Hello World
+	@GetMapping("/hello-world") //Endpoint localhost:8080/atividades/hello-world
+	public String helloWorld(){
+		return "Hello World!!!";
+	}
+	
+	//Realizando a atividade 2 - Imprimir a lista BSM da Generation
+	@Autowired
+	private Atividade2Repository atividade2Repository;
+	
+	@GetMapping("/lista-bsm") //Endpoint localhost:8080/atividades/lista-bsm
+	public ResponseEntity<List<Atividade2>> getAll(){
+		return ResponseEntity.ok(atividade2Repository.findAll());
+	}
+	
+}

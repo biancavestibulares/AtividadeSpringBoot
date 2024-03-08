@@ -1,0 +1,5 @@
+package com.generation.springteste.repository;
+
+public interface Atividade3Repository {
+
+}
